@@ -7,6 +7,10 @@
 /pkg/
 /spec/reports/
 /tmp/
+/vendor/
 
 # Mac OS
 .DS_Store
+
+# Spec
+spec/lib/build/
