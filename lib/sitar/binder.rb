@@ -1,6 +1,7 @@
 # coding: utf-8
 require 'fiddle'
 require 'fiddle/import'
+require 'sitar/executor'
 
 module Sitar
   module Binder
@@ -8,31 +9,29 @@ module Sitar
 
     class << self
 
-      def execute(name, *args)
-        func = bind_method(name, *args)
-        if func
-          return func.call(*args)
-        end
-        nil
-      end
-
-      def bind_method(name, *args)
-        func = nil
+      # Bind at function.
+      #
+      # * +name+ is the function name
+      # * +args+ is the function args
+      #
+      # Return the executor class instance.
+      def at(name, *args)
+        address = nil
+        argv = []
         begin
-          addr = handler.sym(name.to_s)
+          address = handler.sym(name.to_s)
           argv = parse_arguments(*args)
-          func = Fiddle::Function.new(addr, argv, Fiddle::TYPE_INT)
         rescue Fiddle::DLError => e
-          puts e
+          $stderr.puts "Fiddle::DLError #{e}"
         end
-        func
+        Executor.new(address, argv, *args)
       end
 
       def parse_arguments(*args)
         values = *args
-        # No argument.
+        # No have argument.
         if values.length == 0
-          return [Fiddle::TYPE_VOID]
+          return []
         end
 
         argv = []
@@ -40,6 +39,8 @@ module Sitar
           # Decide arg type.
           if arg.kind_of?(Integer)
             argv << Fiddle::TYPE_INT
+          elsif arg.kind_of?(Float)
+            argv << Fiddle::TYPE_DOUBLE
           elsif arg.kind_of?(String)
             argv << Fiddle::TYPE_VOIDP
           end

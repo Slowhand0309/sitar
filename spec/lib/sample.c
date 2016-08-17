@@ -40,6 +40,10 @@ void get_no(int *no) {
   *no = 99;
 }
 
+char *get_version() {
+  return "version 1.0.0";
+}
+
 void print(const char *msg) {
   puts(msg);
 }
