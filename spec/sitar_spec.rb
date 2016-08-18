@@ -4,13 +4,26 @@ require 'spec_helper'
 
 describe 'Sitar' do
 
-  before do
+  before(:all) do
 
     module Spec
       extend Sitar
       load 'spec/lib/build/libsample.so'
+
+      SCORE = struct([
+        "unsigned int play_time",
+        "long value"
+      ])
     end
 
+  end
+
+  it 'run' do
+    begin
+      Spec.run().run
+    rescue => e
+      expect(false)
+    end
   end
 
   it 'add' do
@@ -24,5 +37,12 @@ describe 'Sitar' do
   it 'get_version' do
     str = Spec.get_version.to_s
     expect(str).to eq 'version 1.0.0'
+  end
+
+  it 'get_score' do
+    score = Spec::SCORE.malloc
+    Spec.get_score(score.to_ptr).run
+    puts score.play_time
+    puts score.value
   end
 end

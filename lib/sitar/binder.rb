@@ -43,6 +43,8 @@ module Sitar
             argv << Fiddle::TYPE_DOUBLE
           elsif arg.kind_of?(String)
             argv << Fiddle::TYPE_VOIDP
+          elsif arg.kind_of?(Fiddle::Pointer)
+            argv << Fiddle::TYPE_VOIDP
           end
         end
         argv

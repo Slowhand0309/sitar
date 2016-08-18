@@ -24,4 +24,16 @@ module Sitar
   def method_missing(name, *args)
     Binder::at(name, *args)
   end
+
+  # Create C struct.
+  #
+  def struct(signature)
+    Binder::struct(signature)
+  end
+
+  # Create C union.
+  #
+  def union(signature)
+    Binder::union(signature)
+  end
 end
