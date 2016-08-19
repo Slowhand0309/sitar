@@ -1,5 +1,6 @@
 # coding: utf-8
 require 'fiddle/import'
+require 'sitar/types/wide_char'
 
 module Sitar
   class Executor
@@ -36,6 +37,19 @@ module Sitar
       func = get_func(Fiddle::TYPE_LONG)
       if func
         result = Fiddle::Pointer.new(func.call(*@args)).to_s
+      end
+      result
+    end
+
+    # === Description
+    #
+    # Return (wchar_t *)wide charactor.
+    #
+    def to_ws
+      result = ''
+      func = get_func(Fiddle::TYPE_LONG)
+      if func
+        result = Types::WideChar.from_ptr(func.call(*@args))
       end
       result
     end

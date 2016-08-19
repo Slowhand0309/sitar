@@ -39,6 +39,11 @@ describe 'Sitar' do
     expect(str).to eq 'version 1.0.0'
   end
 
+  it 'get_wide_str' do
+    wide_str = Spec.get_wide_str.to_ws
+    expect(wide_str).to eq 'wide string'
+  end
+
   it 'get_score' do
     score = Spec::SCORE.malloc
     Spec.get_score(score.to_ptr).run

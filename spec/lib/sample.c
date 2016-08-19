@@ -44,6 +44,10 @@ char *get_version() {
   return "version 1.0.0";
 }
 
+wchar_t *get_wide_str() {
+  return L"wide string";
+}
+
 void print(const char *msg) {
   puts(msg);
 }
