@@ -22,7 +22,12 @@ module Sitar
   # Implemention method_missing.
   #
   def method_missing(name, *args)
-    Binder::at(name, *args)
+    e = Binder::at(name, *args)
+    unless e
+      super(name, *args) # No method error.
+    else
+      e
+    end
   end
 
   # Create C struct.

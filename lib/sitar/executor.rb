@@ -16,15 +16,22 @@ module Sitar
       @args = args
     end
 
-    def run
+    # === Description
+    #
+    # Call function with no returned value.
+    def call
       func = get_func(Fiddle::TYPE_VOID)
       if func
         func.call(*@args)
       end
     end
 
-    def to_i
-      result = -1 # Return -1, if invalid 'to_i' method.
+    # === Description
+    #
+    # Call function with integer returned value.
+    # If failed call, returned -1.
+    def ret_i
+      result = -1
       func = get_func(Fiddle::TYPE_LONG)
       if func
         result = func.call(*@args).to_i
@@ -32,8 +39,12 @@ module Sitar
       result
     end
 
-    def to_s
-      result = '' # Return empty string, if invalid 'to_s' method.
+    # === Description
+    #
+    # Call function with (char *) returned value.
+    # If failed call, returned ''.
+    def ret_s
+      result = ''
       func = get_func(Fiddle::TYPE_LONG)
       if func
         result = Fiddle::Pointer.new(func.call(*@args)).to_s
@@ -43,9 +54,9 @@ module Sitar
 
     # === Description
     #
-    # Return (wchar_t *)wide charactor.
-    #
-    def to_ws
+    # Call function with (wchar_t *) returned value.
+    # If failed call, returned ''.
+    def ret_ws
       result = ''
       func = get_func(Fiddle::TYPE_LONG)
       if func
@@ -54,8 +65,25 @@ module Sitar
       result
     end
 
-    def to_f
-      result = 0.0 # Return 0.0, if invalid 'to_f' method.
+    # === Description
+    #
+    # Call function with float returned value.
+    # If failed call, returned 0.0.
+    def ret_f
+      result = 0.0
+      func = get_func(Fiddle::TYPE_FLOAT)
+      if func
+        result = func.call(*@args).to_f
+      end
+      result
+    end
+
+    # === Description
+    #
+    # Call function with double returned value.
+    # If failed call, returned 0.0.
+    def ret_d
+      result = 0.0
       func = get_func(Fiddle::TYPE_DOUBLE)
       if func
         result = func.call(*@args).to_f

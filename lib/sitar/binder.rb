@@ -24,7 +24,11 @@ module Sitar
         rescue Fiddle::DLError => e
           $stderr.puts "Fiddle::DLError #{e}"
         end
-        Executor.new(address, argv, *args)
+        if address
+          Executor.new(address, argv, *args)
+        else
+          nil # If invalid symbol name, return nil.
+        end
       end
 
       def parse_arguments(*args)
