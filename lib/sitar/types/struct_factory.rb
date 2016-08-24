@@ -4,7 +4,7 @@ require 'fiddle/import'
 module Sitar
   module Types
 
-    class StructFactory
+    module StructFactory
 
 
       def create(struct_name, members)
@@ -12,10 +12,14 @@ module Sitar
         @structs[struct_name] = members
       end
 
-      def build
+      def build(m)
         @structs.each do |k, v|
-          # TODO declare struct name
-          struct(parse(v))
+          # Declare struct.
+          name = k.upcase
+          members = parse(v)
+          m.module_eval <<-EOF
+             #{name} = struct(#{members})
+          EOF
         end
       end
 
@@ -29,7 +33,6 @@ module Sitar
         inners = []
         count.times do
           members.each do |member|
-            tmp = member
             # Parse inner struct.
             type = member.split(' ')[0]
             inner_struct = @structs[type]
@@ -39,9 +42,10 @@ module Sitar
               if /\[(\d+)\]/ =~ value
                 count = $1.to_i
               end
-              tmp << parse_inner_struct(count, inner_struct)
+              inners << parse_inner_struct(count, inner_struct)
+            else
+              inners << member
             end
-            inners << tmp
           end
         end
         inners.flatten

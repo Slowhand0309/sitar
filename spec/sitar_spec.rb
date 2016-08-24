@@ -8,12 +8,25 @@ describe 'Sitar' do
 
     module Spec
       extend Sitar
+      extend Sitar::Types::StructFactory
+
       load 'spec/lib/build/libsample.so'
 
-      SCORE = struct([
+      # struct Score {
+      #   unsigned int play_time;
+      #   long value;
+      # };
+      create 'score', [
         "unsigned int play_time",
         "long value"
-      ])
+      ]
+
+      create 'menu', [
+        "score v[2]",
+        "int n"
+      ]
+      
+      build(self)
     end
 
   end

@@ -1,6 +1,7 @@
 # coding: utf-8
 require 'fiddle/import'
 require 'sitar/types/wide_char'
+require 'sitar/types/struct_factory'
 
 module Sitar
   class Executor
