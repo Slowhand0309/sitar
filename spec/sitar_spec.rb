@@ -16,19 +16,18 @@ describe 'Sitar' do
       #   unsigned int play_time;
       #   long value;
       # };
-      create 'score', [
+      define 'score', [
         "unsigned int play_time",
         "long value"
       ]
 
-      create 'menu', [
+      define 'menu', [
         "score v[2]",
         "int n"
       ]
-      
-      build(self)
-    end
 
+      define_eval(self)
+    end
   end
 
   it 'no_method' do

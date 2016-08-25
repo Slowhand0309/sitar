@@ -7,12 +7,12 @@ module Sitar
     module StructFactory
 
 
-      def create(struct_name, members)
+      def define(struct_name, members)
         @structs ||= {}
         @structs[struct_name] = members
       end
 
-      def build(m)
+      def define_eval(m)
         @structs.each do |k, v|
           # Declare struct.
           name = k.upcase
