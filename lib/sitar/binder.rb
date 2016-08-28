@@ -54,6 +54,8 @@ module Sitar
             argv << Fiddle::TYPE_VOIDP
           elsif arg.kind_of?(Fiddle::Pointer)
             argv << Fiddle::TYPE_VOIDP
+          else
+            argv << Fiddle::TYPE_VOIDP
           end
         end
         argv

@@ -6,10 +6,15 @@ module Sitar
 
     class Pointer
 
-      def pptr
-        Fiddle::Pointer.malloc(Fiddle::SIZEOF_VOIDP)
-      end
+      class << self
 
+        # Cretae double pointer value.
+        # e.g. void **double_ptr;
+        def pptr
+          Fiddle::Pointer.malloc(Fiddle::SIZEOF_VOIDP)
+        end
+
+      end
     end
 
   end

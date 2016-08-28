@@ -16,14 +16,27 @@ describe 'Sitar' do
       #   unsigned int play_time;
       #   long value;
       # };
-      define 'score', [
+      define 'Score', [
         "unsigned int play_time",
         "long value"
       ]
 
-      define 'menu', [
-        "score v[2]",
-        "int n"
+      # struct Person {
+      #   int no;
+      #   wchar_t name[20];
+      # };
+      define 'Person', [
+        "int no",
+        "wchar_t name[20]"
+      ]
+
+      # struct Members {
+      #   struct Person persons[3];
+      #   struct Members *nextPtr;
+      # };
+      define 'Members', [
+        "Person persons[3]",
+        "void *nextPtr"
       ]
 
       define_eval(self)
@@ -65,5 +78,27 @@ describe 'Sitar' do
     Spec.get_score(score.to_ptr).call
     expect(score.play_time).to eq 10000
     expect(score.value).to eq 987654321
+  end
+
+  it 'member' do
+    double_ptr = Sitar::Types::Pointer.pptr
+    Spec.initMember(double_ptr).call
+    members = Spec::MEMBERS.new(double_ptr.ptr)
+    expect(members.no_1).to eq 1
+    expect(members.name_1.pack('U9')).to eq 'hogehoge1'
+    expect(members.no_2).to eq 2
+    expect(members.name_2.pack('U9')).to eq 'hogehoge2'
+    expect(members.no_3).to eq 3
+    expect(members.name_3.pack('U9')).to eq 'hogehoge3'
+
+    members2 = Spec::MEMBERS.new(members.nextPtr)
+    expect(members2.no_1).to eq 11
+    expect(members2.name_1.pack('U9')).to eq 'fugafuga1'
+    expect(members2.no_2).to eq 12
+    expect(members2.name_2.pack('U9')).to eq 'fugafuga2'
+    expect(members2.no_3).to eq 13
+    expect(members2.name_3.pack('U9')).to eq 'fugafuga3'
+
+    Spec.freeMember(double_ptr).call
   end
 end
