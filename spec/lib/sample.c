@@ -22,7 +22,8 @@ struct Members {
  * No argument, not return.
  */
 void run() {
-  for (int i = 0; i < 10; i++) {
+  int i;
+  for (i = 0; i < 10; i++) {
     // Do something...
     ;
   }
