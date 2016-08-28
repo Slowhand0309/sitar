@@ -45,7 +45,7 @@ M.add(1, 2).ret_i # => 3
 * List of function return type mthod like ret_XXX.
 
 |Method|Return Type in C|Return Type in Ruby|Description|
-|:-----|:------|:----------|
+|:-----|:------|:----------|:----------|
 |call|void|nil|Not returned value.|
 |ret_i|int|Integer|Returned int value.|
 |ret_s|char *|String|Return string pointer.|
