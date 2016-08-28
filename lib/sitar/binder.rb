@@ -2,6 +2,7 @@
 require 'fiddle'
 require 'fiddle/import'
 require 'sitar/executor'
+require 'sitar/types'
 
 module Sitar
   module Binder
@@ -29,6 +30,10 @@ module Sitar
         else
           nil # If invalid symbol name, return nil.
         end
+      end
+
+      def typealias_ext
+        include Types::Aliases
       end
 
       def parse_arguments(*args)

@@ -1,11 +1,12 @@
 # coding: utf-8
-require "sitar/binder"
+require 'sitar/binder'
 
 module Sitar
 
   # == Description
   #
   # Load shared librarys (.so, .dll).
+  # And extend typealias.
   #
   # * +library+ is the specfic library path's
   #
@@ -17,6 +18,7 @@ module Sitar
   # end
   def load(*library)
     Binder::dlload(*library)
+    Binder::typealias_ext
   end
 
   # Implemention method_missing.
@@ -41,4 +43,11 @@ module Sitar
   def union(signature)
     Binder::union(signature)
   end
+
+  # Declare typealias.
+  #
+  def typealias(alias_type, orig_type)
+    Binder::typealias(alias_type, orig_type)
+  end
+
 end
