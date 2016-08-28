@@ -8,6 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Sitar::VERSION
   spec.authors       = ["Slowhand0309"]
   spec.email         = ["slowhand0309@gmail.com"]
+  
+  spec.required_ruby_version = ">= 2.0.0"
 
   spec.summary       = %q{Sitar is easy to use the fiddle}
   spec.description   = %q{You can used C method only to extend module with Sitar and load shared library.}
