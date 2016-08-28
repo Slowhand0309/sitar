@@ -9,14 +9,12 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Slowhand0309"]
   spec.email         = ["slowhand0309@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Sitar is easy to use the fiddle}
+  spec.description   = %q{You can used C method only to extend module with Sitar and load shared library.}
+  spec.homepage      = "https://github.com/Slowhand0309/sitar"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "activesupport", "~> 4.0"
