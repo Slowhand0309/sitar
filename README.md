@@ -4,6 +4,8 @@ Sitar is easy to use the [fiddle](https://github.com/ruby/ruby/tree/trunk/ext/fi
 
 [![Build Status](https://travis-ci.org/Slowhand0309/sitar.svg?branch=master)](https://travis-ci.org/Slowhand0309/sitar)
 
+[![Gem Version](https://badge.fury.io/rb/sitar.svg)](https://badge.fury.io/rb/sitar)
+
 ## Installation
 
 Add this line to your application's Gemfile:
