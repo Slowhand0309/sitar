@@ -1,10 +1,11 @@
 language: ruby
-
 before_script:
-  - cd spec/lib && ./build.sh
-
+- cd spec/lib && ./build.sh
 rvm:
-  - "2.0.0"
-  - "2.1.0"
-  - "2.2.0"
-  - "2.3.0"
+- 2.0.0
+- 2.1.0
+- 2.2.0
+- 2.3.0
+notifications:
+  slack:
+    secure: Dhwr0pQzJQx2Lfxr9KcY1NX1HIhNDG3s11R1WGaT2RKVANSjKuLNcsUowkkjLZuR7oNTm0P9OxHfpCBcm8fxl5I4DgKKgtUTBWH3R75l6KEnSduU1Jx+Kpdh8g2Fx6ldrfNUkmoUGHfeO1UsO+nk8gbWI2t8vioRNCxCm5ahitQHAl93hWTtWfzySEtkPISBRMROXN5Sr1rc9dRfoLeSxQnTETpOCr7qn+EDKO7+UBzaFJYQFQwlb/IjC1vD3drfB20Wxs1ClbBLjqqhOmRktChHU1SO476cs+OLnFSmRfjob/sQ0bmR/q0CsYdqEYuOmw75PlyeJYLY7AoRzfy4d63ZoiqneUpt90mYbARY8N0d6SWTPPUB5lxt+tQAKW6CDmHnuOrYAAWtzdJBQ4+PAX2QysK1UuJ6BFHB7G6zH7cVyj0402BrmexvvXpOrJDsSi41y5mVRAwHAlTnP+rQn6HEfW7xSp8oq4Vgu92TxojGz/ORtjw0532noUWa2efXbVu2bOMj5QPoIX9b+nNEukasuSaFjm/Mx3pvA6OknxA4JOwjSA/IIQvujWrrGELennTtVTwdpuylHX7FK4z1bH5puJTjR4yswuCklEJfBwfBERFsSgTH4GqGpDdDIna8ycZW/sIswuRUzfm/V2wy4swR5h5UQuOtILt5PhEgLlg=
